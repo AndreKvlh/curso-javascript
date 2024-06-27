@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilo/style.css">
+    <title>Verificador de Idade</title>
+</head>
+<body>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+    <main>
+        <section id="inputs">
+            <div>
+                <label for="anoNasc">Digite o seu ano de nascimento</label>
+                <input type="number" name="anoNasc" id="anoNasc" min="1940" max="2000" value="1996">
+            </div>
+            <div>
+                <label for="sexo">Sexo:</label>
+                <input type="radio" name="sexo" id="masculino" value="masculino">Masculino
+                <input type="radio" name="sexo" id="feminino" value="feminino">Feminino
+            </div>
+            <div><input type="submit" value="Verificar" onclick="verificarIdade()"></div>
+        </section>
+        <section id="resultado">
+        </section>
+        <script> 
+            var dataAtual = new Date()
+            var inputAno = document.querySelector('#anoNasc')
+            inputAno.max = dataAtual.getFullYear()
+
+            function verificarIdade() {
+                var inputSexo = document.querySelector('input[name=sexo]:checked')
+                var inputResultado = document.querySelector('#resultado')
+                var idade = dataAtual.getFullYear() - inputAno.value
+                var sexo = inputSexo.value
+                var resultado = ''
+
+                
+
+                if (sexo == 'masculino') {
+                    resultado += `<p>Detectamos um homem de ${idade} anos.</p>`
+                    if (idade < 18) {
+                        resultado += '<img src="imagens/hjovem-400.jpg" alt="">'
+                    } else if (idade > 60) {
+                        resultado += '<img src="imagens/hidoso-400.jpg" alt="">'
+                    } else {
+                        resultado += '<img src="imagens/hadulto-400.jpg" alt="">'
+                    }
+                } else {
+                    resultado += `<p>Detectamos uma mulher de ${idade} anos.</p>`
+                    if (idade < 18) {
+                        resultado += '<img src="imagens/mjovem-400.jpg" alt="">'
+                    } else if (idade > 60) {
+                        resultado += '<img src="imagens/midosa-400.jpg" alt="">'
+                    } else {
+                        resultado += '<img src="imagens/madulta-400.jpg" alt="">'
+                    }
+                }
+                inputResultado.innerHTML = resultado
+            }
+        </script>
+    </main>
+    <footer>
+        <p>&copy; Curso em Vídeo</p>
+    </footer>
+</body>
+</html>

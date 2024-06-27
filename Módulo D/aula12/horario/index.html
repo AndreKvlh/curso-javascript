@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilo/style.css">
+    <title>Hora do Dia</title>
+</head>
+<body>
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+    <main>
+        <section>
+            <p id="horario"></p>
+            <img src="imagens/manha-400.jpg" alt="Amanhecer" id="imagem">
+        </section>
+    </main>
+    <footer>
+        <p>Copyright Curso em Vídeo</p>
+    </footer>
+    <script>
+        var dataAtual = new Date()
+        var hora = dataAtual.getHours()
+        var campoHorario = document.querySelector('#horario')
+        var campoImagem = document.querySelector('#imagem')
+        campoHorario.innerHTML = `Agora são ${hora} horas!`
+
+        if (hora >= 6 && hora <= 12) {
+            document.body.style.backgroundColor = "#da784b"
+            campoImagem.src = "imagens/manha-400.jpg"
+        } else if (hora >= 13 && hora <= 18) {
+            document.body.style.backgroundColor = "#964338"
+            campoImagem.src = "imagens/tarde-400.jpg"
+        } else {
+            document.body.style.backgroundColor = "#080225"
+            campoImagem.src = "imagens/noite-400.jpg"
+        }
+    </script>
+</body>
+</html>
